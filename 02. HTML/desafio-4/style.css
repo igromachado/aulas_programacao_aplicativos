@@ -1,0 +1,116 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.qbranco{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.qvermelho{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
+
+.qazul{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+}
+
+.qlaranja{
+    width: 200px;
+    height: 200px;
+    background-color: orange;
+}
+
+.rvermelho{
+    width: 50%;
+    height: 200px;
+    background-color: red;
+    
+}
+
+.razul{
+    width: 50%;
+    height: 200px;
+    background-color: blue;
+}
+
+.entre{
+    display: flex;
+    justify-content: space-between;
+}
+
+.entrecolunas{
+    display: flex;
+    align-items: space-between;
+}
+
+.centraliza1{
+    display: flex;
+    justify-content: center;
+}
+
+.centraliza2{
+    display: flex;
+    align-items: center;
+}
+
+.igualmente{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.amarelo{
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+}
+
+.rosa{
+    width: 50px;
+    height: 50px;
+    background-color: palevioletred;
+}
+
+.margemesquerda{
+    margin-left: 150px;
+}
+
+.direita{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.coluna{
+    display: flex;
+    flex-direction: column;
+}
+
+.cirB{
+    width: 75px;
+    height: 75px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.cirA{
+    width: 75px;
+    height: 75px;
+    background-color: yellow;
+    border-radius: 50%;
+}
