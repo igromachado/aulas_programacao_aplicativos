@@ -1,5 +1,41 @@
+body{
+    font-family: "Comic Neue", cursive;
+}
+
+.header{
+    width: 100%;
+    height: auto;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .square{
     height: 500px;
     width: 500px;
     background-color: aquamarine;
+}
+
+.middle{
+    height: 500px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.color{
+    background-color: bisque;
+}
+
+.line{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+button{
+    background-color: rgb(255, 255, 255);
+    border-color: white;
+    font-family: "Comic Neue"
 }
