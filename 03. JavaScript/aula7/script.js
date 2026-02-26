@@ -60,4 +60,3 @@ FilteredPeople.forEach(pessoa => {
     const card = createCard(pessoa)
     container.appendChild(card)
 })
-
