@@ -184,3 +184,5 @@ const avgManager = users_manager_active.reduce((acc, user) => {
 
 console.log(avgManager)
 
+
+

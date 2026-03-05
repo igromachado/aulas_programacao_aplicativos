@@ -94,3 +94,4 @@ const mappedPeople = pessoas.map((pessoa) => {
 })
 
 console.log(mappedPeople)
+
