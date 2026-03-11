@@ -1,0 +1,27 @@
+[
+{
+    "id": 0,
+    "name":"Igor",
+    "salary":1234,
+    "parents": {
+        "father":"filipe",
+        "mother":"suzana"
+    }
+},
+
+{
+    "id": 1,
+    "name":"Marcus",
+    "salary":20000
+},
+
+{
+    "id": 2,
+    "name":"thiago",
+    "salary":1234,
+    "parents": {
+        "father":"rogerio",
+        "mother":"maria"
+    }
+}
+]
