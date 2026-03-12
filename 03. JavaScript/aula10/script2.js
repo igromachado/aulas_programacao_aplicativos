@@ -20,7 +20,8 @@ async function setData() {
         console.log('Post: ' + post.title)
     })
 
-    console.log('------------------')
+    console.log('---------------------------------------')
+
   })
 }
 
