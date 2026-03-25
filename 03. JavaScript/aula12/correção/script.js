@@ -60,7 +60,7 @@ class User {
 
 class Client extends User{
     constructor(id, name, email, password){
-        super(id, name, email, password)
+        super(id, name, email, password)    
     }
 
     showData(){
