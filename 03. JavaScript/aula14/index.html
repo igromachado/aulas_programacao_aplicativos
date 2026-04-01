@@ -1,0 +1,275 @@
+<div style="width: 500px; height: 250px">
+    <canvas id="bar1"></canvas>
+    <canvas id="pie1"></canvas>
+    <canvas id="bar2"></canvas>
+    <canvas id="pie2"></canvas>
+    <canvas id="bar3"></canvas>
+
+    <canvas id="bar4"></canvas>
+    <canvas id="pie4"></canvas>
+
+    <canvas id="bar6"></canvas>
+</div>
+
+<script src="chart.js"></script>
+
+<script>
+    
+const vendas = [
+{ id: 1, produto: "Notebook", categoria: "Eletrônicos", preco: 3500, quantidade: 2, cliente: "Ana", cidade: "Curitiba", data: "2025-01-10" },
+{ id: 2, produto: "Celular", categoria: "Eletrônicos", preco: 2000, quantidade: 1, cliente: "Carlos", cidade: "São Paulo", data: "2025-01-12" },
+{ id: 3, produto: "Camiseta", categoria: "Roupas", preco: 80, quantidade: 3, cliente: "João", cidade: "Curitiba", data: "2025-01-15" },
+{ id: 4, produto: "Calça", categoria: "Roupas", preco: 120, quantidade: 2, cliente: "Maria", cidade: "Rio de Janeiro", data: "2025-01-20" },
+{ id: 5, produto: "Tênis", categoria: "Calçados", preco: 300, quantidade: 1, cliente: "Ana", cidade: "Curitiba", data: "2025-02-01" },
+{ id: 6, produto: "Fone", categoria: "Eletrônicos", preco: 150, quantidade: 4, cliente: "Pedro", cidade: "Belo Horizonte", data: "2025-02-03" },
+{ id: 7, produto: "Relógio", categoria: "Acessórios", preco: 500, quantidade: 1, cliente: "Lucas", cidade: "São Paulo", data: "2025-02-10" },
+{ id: 8, produto: "Mochila", categoria: "Acessórios", preco: 200, quantidade: 2, cliente: "Fernanda", cidade: "Curitiba", data: "2025-02-15" },
+{ id: 9, produto: "Tablet", categoria: "Eletrônicos", preco: 1800, quantidade: 1, cliente: "Carlos", cidade: "São Paulo", data: "2025-02-18" },
+{ id: 10, produto: "Jaqueta", categoria: "Roupas", preco: 250, quantidade: 1, cliente: "Ana", cidade: "Curitiba", data: "2025-03-01" },
+{ id: 11, produto: "Sandália", categoria: "Calçados", preco: 120, quantidade: 2, cliente: "Juliana", cidade: "Salvador", data: "2025-03-03" },
+{ id: 12, produto: "Boné", categoria: "Acessórios", preco: 70, quantidade: 3, cliente: "Pedro", cidade: "Belo Horizonte", data: "2025-03-05" },
+{ id: 13, produto: "Monitor", categoria: "Eletrônicos", preco: 900, quantidade: 1, cliente: "Lucas", cidade: "São Paulo", data: "2025-03-10" },
+{ id: 14, produto: "Teclado", categoria: "Eletrônicos", preco: 250, quantidade: 2, cliente: "Fernanda", cidade: "Curitiba", data: "2025-03-12" },
+{ id: 15, produto: "Mouse", categoria: "Eletrônicos", preco: 100, quantidade: 3, cliente: "João", cidade: "Curitiba", data: "2025-03-15" }
+]
+
+const somaCategoria = vendas.reduce((acc, venda) => {
+    acc[venda.categoria] = (acc[venda.categoria] || 0) + (venda.preco * venda.quantidade)
+    return acc
+}, {})
+
+const qtdCategoria = vendas.reduce((acc, venda) => {
+    acc[venda.categoria] = (acc[venda.categoria] || 0) + venda.quantidade
+    return acc
+}, {})
+
+const faturamentoCidade = vendas.reduce((acc, venda) => {
+    acc[venda.cidade] = (acc[venda.cidade] || 0) + (venda.preco * venda.quantidade)
+    return acc
+}, {})
+
+const pedidosCidade = vendas.reduce((acc, venda) => {
+    acc[venda.cidade] = (acc[venda.cidade] || 0) + 1
+    return acc
+}, {})
+
+const totalCliente = vendas.reduce((acc, venda) => {
+    acc[venda.cliente] = (acc[venda.cliente] || 0) + (venda.preco * venda.quantidade)
+    return acc
+}, {})
+
+//const distribuiçãoClientes = vendas.reduce
+
+const qtdProduto = vendas.reduce((acc, venda) => {
+    acc[venda.produto] = (acc[venda.produto] || 0) + venda.quantidade
+    return acc
+}, {})
+
+const vendasMes = vendas.reduce((acc, venda) => {
+    const mes = venda.data.split('-')[1]
+    acc[mes] = (acc[mes] || 0) + (venda.preco * venda.quantidade)
+    return acc
+}, {}) 
+
+const ctx1 = document.getElementById('bar1');
+const ctx2 = document.getElementById('pie1');
+const ctx3 = document.getElementById('bar2');
+const ctx4 = document.getElementById('pie2');
+const ctx5 = document.getElementById('bar3');
+//const ctx6 = document.getElementById('pie3');
+const ctx7 = document.getElementById('bar4');
+const ctx8 = document.getElementById('pie4');
+//const ctx9 = document.getElementById('bar5');
+const ctx10 = document.getElementById('bar6');
+
+new Chart(ctx1, {
+type: 'bar',
+data: {
+    labels: Object.keys(somaCategoria),
+    datasets: [{
+    label: 'Faturamento por Categoria (R$)',
+    data: Object.values(somaCategoria),
+    borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+    y: {
+        beginAtZero: true
+    }
+    }
+}
+});
+
+new Chart(ctx2, {
+type: 'pie',
+data: {
+    labels: Object.keys(qtdCategoria),
+    datasets: [{
+    label: 'Quantidade total por categoria',
+    data: Object.values(qtdCategoria),
+    borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+    y: {
+        beginAtZero: true
+    }
+    }
+}
+});
+
+new Chart(ctx3, {
+type: 'bar',
+data: {
+    labels: Object.keys(faturamentoCidade),
+    datasets: [{
+    label: 'Faturamento total por cidade (R$)',
+    data: Object.values(faturamentoCidade),
+    borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+    y: {
+        beginAtZero: true
+    }
+    }
+}
+});
+
+new Chart(ctx4, {
+type: 'pie',
+data: {
+    labels: Object.keys(pedidosCidade),
+    datasets: [{
+    label: 'Quantidade de pedidos por cidade',
+    data: Object.values(pedidosCidade),
+    borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+    y: {
+        beginAtZero: true
+    }
+    }
+}
+});
+
+new Chart(ctx5, {
+type: 'bar',
+data: {
+    labels: Object.keys(totalCliente),
+    datasets: [{
+    label: 'Total gasto por cliente (R$)',
+    data: Object.values(totalCliente),
+    borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+    y: {
+        beginAtZero: true
+    }
+    }
+}
+});
+
+/* new Chart(ctx6, {
+type: 'pie',
+data: {
+    labels: Object.keys(totalCliente),
+    datasets: [{
+    label: 'Distribuição de clientes',
+    data: Object.values(totalCliente),
+    borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+    y: {
+        beginAtZero: true
+    }
+    }
+}
+}) */
+
+new Chart(ctx7, {
+type: 'bar',
+data: {
+    labels: Object.keys(qtdProduto),
+    datasets: [{
+    label: 'Quantidade vendida por produto',
+    data: Object.values(qtdProduto),
+    borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+    y: {
+        beginAtZero: true
+    }
+    }
+}
+});
+
+new Chart(ctx8, {
+type: 'pie',
+data: {
+    labels: Object.keys(somaCategoria),
+    datasets: [{
+    label: 'Quantidade vendida por produto',
+    data: Object.values(somaCategoria),
+    borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+    y: {
+        beginAtZero: true
+    }
+    }
+}
+});
+
+/* new Chart(ctx9, {
+type: 'bar',
+data: {
+    labels: Object.keys(somaCategoria),
+    datasets: [{
+    label: 'Quantidade vendida por produto',
+    data: Object.values(somaCategoria),
+    borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+    y: {
+        beginAtZero: true
+    }
+    }
+}
+}); */
+
+new Chart(ctx10, {
+type: 'bar',
+data: {
+    labels: Object.keys(vendasMes),
+    datasets: [{
+    label: 'Faturamento por mês (R$)',
+    data: Object.values(vendasMes),
+    borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+    y: {
+        beginAtZero: true
+    }
+    }
+}
+});
+
+</script>
