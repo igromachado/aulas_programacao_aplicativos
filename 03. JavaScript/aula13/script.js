@@ -1,95 +1,43 @@
-const library = []
+// Abstração -> trazer um objeto do mundo real para a programação
+// Herança -> classe filha herda atributos e métodos da classe pai
+// Encapsulamento -> gerenciar a visibilidade e o acesso aos dados (atributos e métodos)
+// Polimorfismo -> transformação de métodos baseado em uma classe
 
-class Item {
-    #id
-    #title
-    #available
+class Animal{
+    #nome_cientifico
+    #peso
+    #alimentacao
 
-    constructor(id, title){
-        if(!title){
-            return console.error('Title não pode ser vazio!')
-        }
-
-        this.#id = id
-        this.#title = title
-        this.#available = true
-        library.push({id, title, active: true})
+    constructor(nome_cientifico, peso, alimentacao){
+        this.#nome_cientifico = nome_cientifico
+        this.#peso = peso
+        this.#alimentacao = alimentacao
     }
 
-    getId(){
-        return this.#id
+    emitirSom() {
+        console.log('Emitindo som...')
     }
 
-    getTitle(){
-        return this.#title
-    }
-
-    setTitle(title){
-        return !title ? console.error('Erro ao setar título') : this.#title = title
-    }
-
-    checkAvailability(){
-        return this.#available === true ? true : false
-    }
-
-    lendBook(){
-        if(!this.#available) return console.error('O livro já foi emprestado')
-        this.#available = false
-    }
-
-    returnBook(){
-        if(!this.#available) return console.error('O livro já foi devolvido')
-        this.#available = false
-    }
-
-    showItem(){
-        return{
-            id : this.getId(),
-            title : this.getTitle(),
-            available : this.checkAvailability()
-        }
-    }
-
-    showAllItems(){
-        return library
+    locomover() {
+        console.log("Se locomovendo...")
     }
 }
 
-class Book extends Item {
-    #author
-    
-    constructor(id, title, author){
-        super(id, title)
-
-        if(!author){
-            return console.error('Author não pode ser vazio')
-        }
-        this.#author = author
-    }
-
-    getAuthor(){
-        return this.#author
+class Cachorro extends Animal{
+    emitirSom(){
+        console.log('eu sou burro')
     }
 }
 
-class Movie extends Item {
-    #duration
-
-    constructor(id, title, duration){
-        super(id, title)
-
-        if (duration < 0){
-            return console.error('Duration deve ser maior que 0')
-        }
-        this.#duration = duration
-    }
-
-    getDuration(){
-        return this.#duration
+class Gato extends Animal{
+    emitirSom(){
+        console.log('eu te odeio, humano')
     }
 }
 
-const i1 = new Item(1, 'igo')
-const b1 = new Book(2, 'Jantar Secreto', 'Rafael Montes')
-const m1 = new Movie(3, 'Homem-Aranha', '100 min')
-console.log(library)
+const dog = new Cachorro('marcus', '15', 'rasao')
+const cat = new Gato('Gordo', 10, 'tudo')
+
+cat.emitirSom()
+dog.emitirSom()
+
