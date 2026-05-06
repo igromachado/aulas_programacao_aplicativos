@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+    <fieldset>
+        <legend>Registrar Venda</legend>
+        <form id="form">
+            <input type="text" placeholder="Nome do produto" id="produto">
+            <input type="text" placeholder="Categoria" id="categoria">
+            <input type="number" placeholder="Quantidade" id="quantidade">
+            <input type="number" step="0.01" placeholder="Preço" id="preco">
+            <input type="date" id="data">
+
+            <select id="tipo_pagamento">
+                <option value="Cartão">Cartão</option>
+                <option value="Pix">Pix</option>
+                <option value="Dinheiro">Dinheiro</option>
+            </select>
+
+            <input type="text" placeholder="Vendedor" id="vendedor">
+            <button type="submit">Registrar</button>
+        </form>
+    </fieldset>
+
+    <br>
+    <br>
+    <br>
+
+    <fieldset>
+        <legend>Atualizar Venda</legend>
+        <form id="formatt">
+            <input type="text" id="idatt" disabled>
+            <input type="text" placeholder="Nome do produto" id="produtoatt">
+            <input type="text" placeholder="Categoria" id="categoriaatt">
+            <input type="number" placeholder="Quantidade" id="quantidadeatt">
+            <input type="number" step="0.01" placeholder="Preço" id="precoatt">
+            <input type="date" id="dataatt">
+
+            <select id="tipo_pagamentoatt">
+                <option value="Cartão">Cartão</option>
+                <option value="Pix">Pix</option>
+                <option value="Dinheiro">Dinheiro</option>
+            </select>
+
+            <input type="text" placeholder="Vendedor" id="vendedoratt">
+            <button type="submit">Atualizar</button>
+        </form>
+    </fieldset>
+
+    <br>
+    <br>
+    <br>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Valor Total</th>
+                <th>Data</th>
+                <th>Pagamento</th>
+                <th>Vendedor</th>
+            </tr>
+        </thead>
+
+        <tbody id="listaVendas">
+        </tbody>
+    </table>
+</div>
+
+    <script src="scripts/index.js"></script>
+</body>
+</html>
