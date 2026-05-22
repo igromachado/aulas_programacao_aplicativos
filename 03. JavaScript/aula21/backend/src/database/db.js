@@ -10,3 +10,11 @@ export const connection = mysql.createConnection({
     database: process.env.DATABASE,
     port: process.env.PORT  
 })
+
+connection.connect((err) => {
+    if (err) {
+        console.error('Erro ao conectar no banco:', err.message)
+    } else {
+        console.log('Banco conectado com sucesso!')
+    }
+})

@@ -62,6 +62,9 @@ export const getPeca = (req, res) => {
                 })
             }
 
+            if(results.length === 0){
+                return res.status(404).send({response: 'Peça não encontrada'})
+            }
             return res.status(200).send(results[0])
         }
     )
